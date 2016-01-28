@@ -24,6 +24,9 @@ public class UtilityStore {
 
         //waitForElementsAbsence(drv, 5, "loader_block");
 
+        WebDriverWait wait = new WebDriverWait(drv, 4);
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("loader_block")));
+
         if (checkHttpResponseCode(drv.getCurrentUrl())) {
             System.out.println("LOGIN IS OK!");
             return true;
@@ -72,8 +75,7 @@ public class UtilityStore {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         //get current date time with Date()
         Date date = new Date();
-        String dateAndTimeAttachment = dateFormat.format(date);
-        return dateAndTimeAttachment;
+        return dateFormat.format(date);
     }
 
 
