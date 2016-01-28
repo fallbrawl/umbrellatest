@@ -22,7 +22,7 @@ public class UtilityStore {
         drv.findElement(By.id("login_password_input")).sendKeys("123123");
         drv.findElement(By.xpath(".//*[@id='login_form']/div[2]/div/div/button")).click();
 
-        waitForElementsAbsence(drv, 12, "loader_block");
+        //waitForElementsAbsence(drv, 5, "loader_block");
 
         if (checkHttpResponseCode(drv.getCurrentUrl())) {
             System.out.println("LOGIN IS OK!");

@@ -9,6 +9,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
@@ -85,7 +87,9 @@ public class AppTest {
         UtilityStore.waitForElementsPresence(drv, 1, "select2-search__field", 'c');
         drv.findElement(By.className("select2-search__field")).click();
         drv.findElement(By.className("select2-search__field")).sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
-        UtilityStore.waitForElementsAbsence(drv, 2, "loader_block");
+        WebDriverWait wait = new WebDriverWait(drv, 1);
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("loader_block")));
+        //UtilityStore.waitForElementsAbsence(drv, 1, "loader_block");
         results2 = drv.findElements(By.className("progress_text"));
 
 
@@ -112,7 +116,7 @@ public class AppTest {
 
         WebDriver drv = new PhantomJSDriver();
         UtilityStore.login(drv);
-        drv.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+      //  drv.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         drv.get("http://148.251.99.194:8081/company/");
 
         drv.findElement(By.id("company_select")).click();
