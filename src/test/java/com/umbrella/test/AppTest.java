@@ -2,14 +2,14 @@ package com.umbrella.test;
 
 
 import org.junit.Assert;
-import org.junit.FixMethodOrder;
-import org.junit.Test;
-import org.junit.runners.MethodSorters;
+
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Unit test for simple App.
  */
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+
 
 public class AppTest {
 
