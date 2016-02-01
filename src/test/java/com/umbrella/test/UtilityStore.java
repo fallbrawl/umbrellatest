@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -17,14 +18,14 @@ import static com.jayway.restassured.RestAssured.given;
 public class UtilityStore {
     public static boolean login(WebDriver drv) {
 
-        drv.get("http://148.251.99.194:8083/login-page/");
-        drv.findElement(By.id("login_email_input")).sendKeys("admin@admin.com");
-        drv.findElement(By.id("login_password_input")).sendKeys("123123");
+        drv.get("http://148.251.99.194:8081/login-page/");
+        drv.findElement(By.xpath(".//*[@id='login_email_input']")).sendKeys("admin@admin.com");
+        drv.findElement(By.xpath(".//*[@id='login_password_input']")).sendKeys("123123");
         drv.findElement(By.xpath(".//*[@id='login_form']/div[2]/div/div/button")).click();
 
         //waitForElementsAbsence(drv, 5, "loader_block");
 
-        WebDriverWait wait = new WebDriverWait(drv, 4);
+        WebDriverWait wait = new WebDriverWait(drv, 12);
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("loader_block")));
 
         if (checkHttpResponseCode(drv.getCurrentUrl())) {
@@ -79,12 +80,11 @@ public class UtilityStore {
     }
 
 
-    public static void uploadFile(WebDriver inputDriver, String nameOfFileForm, String pathToFile) {
+    public static void uploadFile(WebDriver inputDriver, String nameOfFileForm) {
 
-        //File input for Lubuntu /home/paul/Desktop/2015-12-30-150350_1920x1080_scrot.pdf
-        //File input for Windows C:\Users\NEXUS\Pictures\wow.pdf
-
-        inputDriver.findElement(By.name(nameOfFileForm)).sendKeys(pathToFile);
+        String paths = (System.getProperty("user.dir") + "/Geographic50.xlsx");
+        System.out.println(paths);
+        inputDriver.findElement(By.name(nameOfFileForm)).sendKeys(paths);
     }
 
 
