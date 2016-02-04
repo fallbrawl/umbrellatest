@@ -78,7 +78,7 @@ public class AppTest {
             caps.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, cliArgsCap);
             Logger.getLogger(PhantomJSDriverService.class.getName()).setLevel(Level.OFF);
 
-            WebDriver drv = new PhantomJSDriver(caps);
+            WebDriver drv = new PhantomJSDriver();
 
 //        Logger.getLogger(PhantomJSDriverService.class.getName()).setLevel(Level.OFF);
             UtilityStore.login(drv);
